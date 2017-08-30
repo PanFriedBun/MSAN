@@ -34,10 +34,6 @@ def readcsv(data):
 
 
 
-
-
-
-
 header, myList = readcsv(getdata())
 writejson(header, myList)
 

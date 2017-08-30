@@ -20,6 +20,7 @@ def readcsv(data):
     containing a list of names and also return the list of lists
     containing the data.
     '''
+    ##split data by new line character and store in splited_data
     splited_data = data.split('\n')
     length_of_splited_data = len(splited_data)
     myList = []
@@ -49,7 +50,13 @@ def writexml(header, myList):
     for j in range(0,len(myList)):
         middle += "        <record>\n            "
         for k in range(0,len(myList[j])):
-            middle += "<"+header[k]+">" + myList[j][k] + "<"+"/"+header[k]+">"
+            ##get rid of white space in xml tags name
+            header[k] = header[k].replace(" ","_")
+            middle += "<"+header[k]+">" + myList[j][k] + "<"+"/"+header[k]
+            if k != len(myList[j])-1:
+                middle += ">\n            "
+            else:
+                 middle += ">"
         middle += "\n        </record>\n"
     buttom  =""
     buttom  += "    </data>\n"
